@@ -1,0 +1,76 @@
+﻿body {
+    font-family: "Arial";
+}
+
+.header {
+    text-align: center;
+    font-family: "Arial";
+}
+
+.title {
+    text-align: left;
+}
+
+table {
+    max-width: 100%;
+    border-collapse: collapse;
+    font-family: "Arial";
+    font-size: 11;
+    margin-top: 50px;
+}
+
+td {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    max-width: 100px;
+}
+
+
+table th {
+    color: #000000;
+    font-family: "Arial";
+    border-radius: 0;
+    margin-bottom 70px;
+}
+
+th.rotate {
+    height: 60px;
+    padding: 0px;
+    margin: 0px;
+    white-space: nowrap;
+    color: #000000;
+}
+
+th.rotate > div {
+    -webkit-transform: rotate(290deg);
+    -moz-transform: rotate(290deg);
+    -ms-transform: rotate(290deg);
+    -o-transform: rotate(290deg);
+    transform: rotate(290deg);
+}
+
+th.rotate > div > span {
+}
+
+
+th {
+    padding: 0px;
+    font-family: "Arial";
+    max-width: 50px;
+    min-width: 50px;
+    text-align: right;
+}
+
+.time_header {
+    padding-bottom: 20px !important;
+}
+
+.time_value {
+    min-width: 60px;
+    white-space: pre-wrap;
+}
+
+.colored {
+    background-color: lightgray;
+}

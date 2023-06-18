@@ -1,0 +1,52 @@
+﻿@using Divo.Views.Shared
+
+@{
+    if (Model.Party.Active == true)
+    {
+        ViewData["ActivePage"] = ManageNavPages.Index;
+    }
+    else
+    {
+        ViewData["ActivePage"] = ManageNavPages.HistoryIndex;
+    }
+    ViewData["Title"] = "Partijen";
+}
+@model Divo.ViewModels.PartyPartyMembersViewModel
+
+<h4>@Model.Party.Name</h4>
+<br />
+
+<div>
+    <h4>Partij Leden</h4>
+    <hr />
+    <dl class="row">
+        @if (Model.PartyMembers.Any())
+        {
+            @foreach (var member in Model.PartyMembers)
+            {
+                <dt class="col-sm-2">
+                    <a class="btn btn-default" asp-controller="PartyMember" asp-action="Details" asp-route-id="@member.Id"><strong>@member.Name</strong></a>
+                </dt>
+                <dd class="col-sm-10">
+                    @member.Role
+                </dd>
+            }
+        }
+    </dl>
+    @if (!Model.PartyMembers.Any())
+    {
+        <h6>@Model.Party.Name heeft nog geen toegewezen partij leden!</h6>
+    }
+</div>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <br />
+        <h4>Links</h4>
+        <hr />
+        <div>
+            <a class="btn btn-secondary" asp-action="Details" asp-route-id="@Model.Party.Id">Terug</a>
+        </div>
+    </div>
+</div>

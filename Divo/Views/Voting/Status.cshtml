@@ -1,0 +1,98 @@
+﻿@using Divo.Views.Shared
+@{
+    ViewData["ActivePage"] = ManageNavPages.Index;
+    ViewData["Title"] = "Stembussen";
+}
+@model Divo.Models.Voting
+
+<h4>@Model.Name</h4>
+<br />
+
+@if (Model.Active == false && Model.Finished == false)
+{
+    <div class="alert alert-warning" role="alert">
+        <p>
+            <strong>Je staat op het punt om deze stembus te openen voor publiek! Deze actie kan niet ongedaan gemaakt worden!</strong>
+        </p>
+    </div>
+}
+
+@if (Model.Active == true)
+{
+    <div class="alert alert-warning" role="alert">
+        <p>
+            <strong>Je staat op het punt om deze stembus permanent te sluiten! Deze actie kan niet ongedaan gemaakt worden!</strong>
+        </p>
+    </div>
+}
+
+@if (Model.Finished == true)
+{
+    <div class="alert alert-info" role="alert">
+        <p>
+            <strong>Deze stembus is gearchiveerd.</strong>
+        </p>
+    </div>
+}
+
+<div>
+    <h4>Stembus informatie</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Naam:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Name
+        </dd>
+        <dt class="col-sm-2">
+            Beschrijving:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Description
+        </dd>
+        <dt class="col-sm-2">
+            Open:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Active.ToString()
+        </dd>
+        <dt class="col-sm-2">
+            Gesloten:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Finished.ToString()
+        </dd>
+    </dl>
+</div>
+
+
+@using (Html.BeginForm("Status", "Voting"))
+{
+    <section>
+        <div class="col-md-4">
+            @Html.HiddenFor(m => m.Name)
+            @Html.HiddenFor(m => m.Description)
+            @Html.HiddenFor(m => m.Active)
+            @Html.HiddenFor(m => m.Finished)
+            @Html.HiddenFor(m => m.Id)
+            @Html.AntiForgeryToken()
+
+            <br />
+            <div>
+                <h4>Actions</h4>
+                <hr />
+                @if (Model.Active == false && Model.Finished == false)
+                {
+                    <button type="submit" class="btn btn-warning">Open stembus</button>
+                }
+
+                @if (Model.Active == true)
+                {
+                    <button type="submit" class="btn btn-warning">Sluit Stembus</button>
+                }
+                <a class="btn btn-secondary" asp-action="Details" asp-route-id="@Model.Id">Cancel</a>
+            </div>
+        </div>
+    </section>
+}

@@ -1,0 +1,66 @@
+﻿@using Divo.Views.Shared
+@{
+    ViewData["ActivePage"] = ManageNavPages.Index;
+    ViewData["Title"] = "Stembussen";
+}
+
+@model Divo.ViewModels.VotingDeleteViewModel
+
+<h4>@Model.Voting.Name</h4>
+<br />
+
+<div class="alert alert-danger" role="alert">
+    <p>
+        <strong>Je staat op het punt om deze stembus permanent te verwijderen! Deze actie kan niet ongedaan gemaakt worden!</strong>
+    </p>
+</div>
+
+<div>
+    <h4>Stembus informatie</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Naam:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Voting.Name
+        </dd>
+        <dt class="col-sm-2">
+            Beschrijving:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Voting.Description
+        </dd>
+        <dt class="col-sm-2">
+            Deelnemers:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Participants.Count()
+        </dd>
+    </dl>
+</div>
+
+
+@using (Html.BeginForm("Delete", "Voting"))
+{
+    <section>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.HiddenFor(m => m.Voting.Name)
+                @Html.HiddenFor(m => m.Voting.Description)
+                @Html.HiddenFor(m => m.Voting.Active)
+                @Html.HiddenFor(m => m.Voting.Finished)
+                @Html.HiddenFor(m => m.Voting.Id)
+                @Html.AntiForgeryToken()
+
+                    <br/>
+                    <h4>Actions</h4>
+                    <hr/>
+                    <div>
+                        <button type="submit" class="btn btn-danger">Verwijder</button>
+                        <a class="btn btn-secondary" asp-action="Details" asp-route-id="@Model.Voting.Id">Cancel</a>
+                    </div>
+                </div>
+            </div>
+    </section>
+}

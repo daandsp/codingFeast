@@ -1,0 +1,74 @@
+﻿@using Microsoft.AspNetCore.Mvc.ModelBinding
+@using Microsoft.EntityFrameworkCore
+@model Divo.ViewModels.PartyMemberFormViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Maak Partij - Divo";
+}
+
+@using (Html.BeginForm("Save", "PartyMember"))
+    {
+        if (Model.PartyMember != null)
+        {
+            <h4>Pas een persoon aan</h4>
+        }
+        else
+        {
+            <h4>Voeg een persoon toe</h4> 
+        }
+        <section>
+
+            <hr />
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PartyMember.Name)
+                    @Html.TextBoxFor(m => m.PartyMember.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.PartyMember.Name)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PartyMember.Role)
+                    @Html.TextBoxFor(m => m.PartyMember.Role, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.PartyMember.Role)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PartyMember.Description)
+                    @Html.TextBoxFor(m => m.PartyMember.Description, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.PartyMember.Description)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PartyMember.PartyId)
+                    <br />
+                    @Html.DropDownListFor(m => m.PartyMember.PartyId, new SelectList(Model.Parties, "Id", "Name"), "Selecteer Partij", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.PartyMember.PartyId)
+                    <br/>
+                    <h14>* Kan je de juiste partij niet vinden? Zorg dat de partij niet gearchiveerd is.</h14>
+                </div>
+            </div>
+            
+            <br/>
+
+            @Html.HiddenFor(m => m.PartyMember.Id)
+            @Html.AntiForgeryToken()
+
+            <div class="row">
+                <div class="col-md-4">
+                    <br />
+                    <h4>Actions</h4>
+                    <hr />
+                    <div>
+                        @if (Model.PartyMember.Id != 0)
+                        {
+                            <a class="btn btn-secondary" asp-action="Details" asp-route-id="@Model.PartyMember.Id">Terug</a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-secondary" asp-action="Index">Terug</a>
+                        }
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }

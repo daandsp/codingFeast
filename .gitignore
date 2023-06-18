@@ -1,0 +1,12 @@
+/.vs/*
+.vs/slnx.sqlite
+Frontend/isuite/.vscode/launch.json
+*.sqlite
+Backend/Backend/Properties/PublishProfiles/CustomProfile.pubxml
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json
+/Frontend/node_modules/.bin
+/Frontend/node_modules
+/ISuite/ISuite/WebUI/appsettings.json
+/ISuite/ISuite/WebUI/appsettings.Local.json
+/.vs/VSWorkspaceState.json

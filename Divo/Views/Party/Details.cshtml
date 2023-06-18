@@ -1,0 +1,119 @@
+﻿@using Divo.Views.Shared
+
+@{
+    ViewData["Title"] = "Partijen";
+
+    if (Model.Party.Active == true)
+    {
+        ViewData["ActivePage"] = ManageNavPages.Index;
+    }
+    else
+    {
+        ViewData["ActivePage"] = ManageNavPages.HistoryIndex;
+    }
+}
+@model Divo.ViewModels.PartyDetailsViewModel
+
+<h4>@Model.Party.Name</h4>
+<br />
+@if (Model.Party.Active == false)
+{
+    <div class="alert alert-info" role="alert">
+        <p>
+            <strong>Deze partij is gearchiveerd</strong>
+        </p>
+    </div>
+}
+
+@if (!Model.PartyMembers.Any() && Model.Party.Active == true)
+{
+    <div class="alert alert-info" role="alert">
+        <p>
+            <strong>Deze partij heeft nog geen toegewezen leden!</strong>
+        </p>
+
+        <a class="btn btn-secondary" asp-controller="PartyMember" asp-action="New">Voeg lid toe</a>
+    </div>
+}
+
+<div>
+    <h4>Partij</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Name:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Party.Name
+        </dd>
+        <dt class="col-sm-2">
+            Beschrijving:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Party.Description
+        </dd>
+        <dt class="col-sm-2">
+            Actief:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Party.Active.ToString()
+        </dd>
+        <dt class="col-sm-2">
+            Leden:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.PartyMembers.Count()
+        </dd>
+        <dt class="col-sm-2">
+            Stembussen:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Participants.Count()
+        </dd>
+    </dl>
+</div>
+
+@*if (User.Identity.IsAuthenticated)
+    {*@
+@*if (User.IsInRole(RoleName.CanManageMovies))
+    {*@
+<div class="row">
+    <div class="col-md-4">
+        <br />
+        <h4>Actions</h4>
+        <hr />
+        <div>
+            <a class="btn btn-info" asp-action="Edit" asp-route-id="@Model.Party.Id">Edit</a>
+            @if (!Model.Participants.Any())
+            {
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.Party.Id">Verwijder</a>
+            }
+            @if (Model.PartyMembers.Any() && Model.Party.Active == true)
+            {
+                <a class="btn btn-secondary" asp-controller="PartyMember" asp-action="New">Voeg lid toe</a>
+            }
+        </div>
+    </div>
+
+    @if (Model.Participants.Any() || Model.PartyMembers.Any())
+    {
+        <div class="col-md-6 col-md-offset-2">
+            <br />
+            <h4>Links</h4>
+            <hr />
+            <div>
+                @if (Model.Participants.Any())
+                {
+                    <a class="btn btn-secondary" asp-controller="Party" asp-action="Participating" asp-route-id="@Model.Party.Id">Stembussen</a>
+                }
+
+                @if (Model.PartyMembers.Any())
+                {
+                    <a class="btn btn-secondary" asp-controller="Party" asp-action="PartyMembers" asp-route-id="@Model.Party.Id">Partijleden</a>
+                }
+            </div>
+        </div>
+    }
+</div>
+@*}*@
+@*}*@

@@ -1,0 +1,60 @@
+﻿@using Divo.Views.Shared
+
+@{
+    ViewData["Title"] = "Partijen";
+    ViewData["ActivePage"] = ManageNavPages.HistoryIndex;
+}
+@model IEnumerable<Divo.Models.Party>
+
+<h4>Inactieve Partijen</h4>
+<br />
+@if (!Model.Any())
+{
+    <hr />
+    <p>Er zijn nog <strong>geen</strong> partijen inactief.</p>
+}
+else
+{
+    <div class="table__container">
+        <table class="table" id="Party">
+            <thead>
+                <tr>
+                    <th>
+                        Naam
+                    </th>
+                    <th>
+                        Beschrijving
+                    </th>
+                    <th>
+                        Opties
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var party in Model)
+                {
+                    <tr>
+                        <td>
+                            @party.Name
+                        </td>
+                        <td>
+                            @party.Description
+                        </td>
+                        <td>
+                            <a class="btn btn-secondary" asp-action="Details" asp-route-id="@party.Id">Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#Voting').DataTable();
+        });
+    </script>
+}

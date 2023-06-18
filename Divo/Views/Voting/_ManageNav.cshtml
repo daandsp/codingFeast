@@ -1,0 +1,8 @@
+﻿@using Divo.Models
+@using Divo.Views.Shared
+
+<ul class="nav nav-pills flex-column">
+    <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="Stembussen" asp-action="Index">Openstaande Stembussen</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.HistoryIndexNavClass(ViewContext)" id="StembusForm" asp-action="HistoryIndex">Gearchiveerde Stembussen</a></li>
+    <li type="button" class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on top!"><a class="nav-link @ManageNavPages.FormNavClass(ViewContext)" id="StembusForm" asp-action="New">Nieuwe Stembus</a></li>
+</ul>

@@ -1,0 +1,59 @@
+﻿@using Divo.Views.Shared
+@model Divo.ViewModels.VoteIndexViewModel
+@{
+    ViewData["Title"] = "Stem Loket";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+
+<h4>@ViewData["Title"]</h4>
+<br/>
+@if (!Model.Votes.Any())
+{
+    <br />
+    <p>Er staan nog geen stembussen open waar jij op kan stemmen</p>
+}
+else
+{
+    <div class="table__container">
+        <table class="table" id="Vote">
+            <thead>
+                <tr>
+                    <th>
+                        Naam
+                    </th>
+                    <th>
+                        Beschrijving
+                    </th>
+                    <th>
+                        Opties
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var voting in Model.Votings)
+                {
+                    <tr>
+                        <td>
+                            @voting.Name
+                        </td>
+                        <td>
+                            @voting.Description
+                        </td>
+                        <td>
+                            <a class="btn btn-secondary" asp-controller="Voting" asp-action="Details" asp-route-id="@voting.Id">Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#Voting').DataTable();
+        });
+    </script>
+}

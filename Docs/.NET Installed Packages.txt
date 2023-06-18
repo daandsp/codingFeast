@@ -1,0 +1,32 @@
+
+				-- Infrastructure --
+
+Microsoft.EntityframeworkCore.InMemory 					(6.0.8)
+Microsoft.EntityframeworkCore.SqlServer 				(6.0.8)
+Microsoft.EntityframeworkCore.Tools 					(6.0.8)
+Microsoft.AspNetCore.Identity.EntityFrameworkCore 			(6.0.8)
+Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore 			(6.0.8)
+Microsoft.AspNetCore.ApiAuthorization.IdentityServer 			(6.0.8)
+Newtonsoft.Json								(13.0.1)
+
+
+
+			  	  -- Application --
+
+Microsoft.EntityframeworkCore 						(6.0.8)
+MediatR.Extensions.microsoft.DependencyInjection 			(10.0.1)
+
+
+
+			     	     -- WebUI --
+
+NSwag.AspNetCore							(13.18.2)
+NSwag.MSBuild								(13.18.2)
+Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore	(6.0.8)
+Microsoft.EntityframeworkCore.Tools					(6.0.8)
+Microsoft.AspNetCore.SpaProxy						(6.0.8)
+Microsoft.AspNetCore.Identity.UI					(6.0.8)
+Microsoft.AspNetCore.Authentication.JwtBearer				(6.0.4)
+Invio.Extensions.Authentication.JwtBearer				(2.0.1)
+
+

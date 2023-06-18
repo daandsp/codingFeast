@@ -1,0 +1,73 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Divo.Models.PartyMember
+@{
+}
+
+<h2>@Model.Name</h2>
+<br />
+
+<div>
+    <h4>Partij Lid</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Naam:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Name
+        </dd>
+        <dt class="col-sm-2">
+            Positie:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Role
+        </dd>
+        <dt class="col-sm-2">
+            Bio:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Description
+        </dd>
+        <dt class="col-sm-2">
+            Partij:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Party.Name
+        </dd>
+    </dl>
+</div>
+
+@*if (User.Identity.IsAuthenticated)
+{*@
+@*if (User.IsInRole(RoleName.CanManageMovies))
+    {*@
+        <div class="row">
+            <div class="col-md-4">
+                <br />
+                <h4>Actions</h4>
+                <hr />
+                <div>
+                    <a class="btn btn-info" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                    <a class="btn btn-warning" asp-action="Delete" asp-route-id="@Model.Id">Verwijder</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-md-offset-2">
+                <br />
+                <h4>Links</h4>
+                <hr />
+                <div>
+                    <a class="btn btn-secondary" asp-controller="Party" asp-action="Details" asp-route-id="@Model.PartyId">Gekoppelde Partij</a>
+                </div>
+            </div>
+        </div>
+    @*}*@
+@*}*@
+<div class="col-md-4">
+    <br/>
+    <br/>
+    <div>
+        <a class="btn btn-secondary" asp-action="Index">Terug naar de lijst</a>
+    </div>
+</div>

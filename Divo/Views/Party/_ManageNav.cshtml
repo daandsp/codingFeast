@@ -1,0 +1,8 @@
+﻿@using Divo.Models
+@using Divo.Views.Shared
+
+<ul class="nav nav-pills flex-column">
+    <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="Stembussen" asp-action="Index">Actieve Partijen</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.HistoryIndexNavClass(ViewContext)" id="Stembussen" asp-action="InactiveParties">Gearchiveerde Partijen</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.FormNavClass(ViewContext)" id="StembusForm" asp-action="New">Nieuwe Partij</a></li>
+</ul>

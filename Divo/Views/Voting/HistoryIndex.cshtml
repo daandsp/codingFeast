@@ -1,0 +1,60 @@
+﻿@using Divo.Views.Shared
+@{
+    ViewData["ActivePage"] = ManageNavPages.HistoryIndex;
+    ViewData["Title"] = "Stembussen";
+}
+@model IEnumerable<Divo.Models.Voting>
+
+
+<h4>Gearchiveerde stembussen</h4>
+<br />
+@if (!Model.Any())
+{
+    <hr />
+    <p>Er zijn nog <strong>geen</strong> stembussen gearchiveerd</p>
+}
+else
+{
+    <div class="table__container">
+        <table class="table" id="Voting">
+            <thead>
+                <tr>
+                    <th>
+                        Naam
+                    </th>
+                    <th>
+                        Beschrijving
+                    </th>
+                    <th>
+                        Opties
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var voting in Model)
+                {
+                    <tr>
+                        <td>
+                            @voting.Name
+                        </td>
+                        <td>
+                            @voting.Description
+                        </td>
+                        <td>
+                            <a class="btn btn-secondary" asp-action="Details" asp-route-id="@voting.Id">Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#Voting').DataTable();
+        });
+    </script>
+}

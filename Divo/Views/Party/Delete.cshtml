@@ -1,0 +1,64 @@
+﻿@using Divo.Views.Shared
+
+@{
+    ViewData["Title"] = "Partijen";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+@model Divo.ViewModels.PartyDeleteViewModel
+
+<h4>@Model.Party.Name</h4>
+<br />
+
+<div class="alert alert-danger" role="alert">
+    <p>
+        <strong>Je staat op het punt om deze partij permanent te verwijderen! Deze actie kan niet ongedaan gemaakt worden!</strong>
+    </p>
+</div>
+
+<div>
+    <h4>Partij informatie</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Name:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Party.Name
+        </dd>
+        <dt class="col-sm-2">
+            Beschrijving:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Party.Description
+        </dd>
+        <dt class="col-sm-2">
+            Leden:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.PartyMembers.Count()
+        </dd>
+    </dl>
+</div>
+
+
+@using (Html.BeginForm("Delete", "Party"))
+{
+<section>
+    <div class="row">
+        <div class="col-md-4">
+            @Html.HiddenFor(m => m.Party.Name)
+            @Html.HiddenFor(m => m.Party.Description)
+            @Html.HiddenFor(m => m.Party.Id)
+            @Html.AntiForgeryToken()
+
+                <br />
+                <h4>Actions</h4>
+                <hr />
+                <div>
+                    <button type="submit" class="btn btn-danger">Verwijder</button>
+                    <a class="btn btn-secondary" asp-action="Details" asp-route-id="@Model.Party.Id">Cancel</a>
+                </div>
+            </div>
+        </div>
+</section>
+}

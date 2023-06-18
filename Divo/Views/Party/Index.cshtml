@@ -1,0 +1,63 @@
+﻿@using Divo.Views.Shared
+
+@{
+    ViewData["Title"] = "Partijen";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+@model IEnumerable<Divo.Models.Party>
+
+<h4>@ViewData["Title"]</h4>
+<br />
+@if (!Model.Any())
+{
+    <div class="alert alert-warning" role="alert">
+        <p>
+            <strong>Er staan geen partijen meer op actief, klik <a class="btn btn-warning" asp-action="New"><strong>hier</strong></a> om een nieuwe partij aan te maken.<br/> Je kan ook een bestaante partij uit het archief halen.</strong>
+        </p>
+    </div>
+}
+else
+{
+    <div class="table__container">
+        <table class="table" id="Party">
+            <thead>
+                <tr>
+                    <th>
+                        Naam
+                    </th>
+                    <th>
+                        Beschrijving
+                    </th>
+                    <th>
+                        Opties
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var party in Model)
+                {
+                    <tr>
+                        <td>
+                            @party.Name
+                        </td>
+                        <td>
+                            @party.Description
+                        </td>
+                        <td>
+                            <a class="btn btn-secondary" asp-action="Details" asp-route-id="@party.Id">Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#Voting').DataTable();
+        });
+    </script>
+}

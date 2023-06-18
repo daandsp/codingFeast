@@ -1,0 +1,92 @@
+﻿@model Vidly.ViewModels.MovieFormViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    if (Model.Movie == null)
+    {
+        ViewData["Title"] = "Movie - Add";
+    }
+    else
+    {
+        ViewData["Title"] = "Movie - Edit";
+    }
+}
+
+<h2>Movie</h2>
+
+@using (Html.BeginForm("Save", "Movie"))
+{
+<section>
+    @if (Model.Movie != null)
+    {
+        <h4>Edit movie.</h4>
+    }
+    else
+    {
+        <h4>Add movie.</h4>
+    }
+    <hr />
+    <div class="col-md-4">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Movie.Name)
+            @Html.TextBoxFor(m => m.Movie.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Movie.Name)
+        </div>
+        <div class="form-group">
+            <div class="dropdown">
+                @Html.LabelFor(m => m.Movie.ReleaseDate)
+                @Html.EditorFor(m => m.Movie.ReleaseDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.Movie.ReleaseDate)
+            </div>
+        </div>
+        @if (Model.Movie.Id == 0)
+        {
+            <div class="form-group">
+                <div class="dropdown">
+                    @Html.LabelFor(m => m.Movie.DateAdded)
+                    @Html.EditorFor(m => m.Movie.DateAdded, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(m => m.Movie.DateAdded)
+                </div>
+            </div>
+        }
+        <div class="form-group">
+            @Html.LabelFor(m => m.Movie.NumberInStock)
+            @Html.TextBoxFor(m => m.Movie.NumberInStock, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Movie.NumberInStock)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Movie.GenreId)
+            <br />
+            @Html.DropDownListFor(m => m.Movie.GenreId, new SelectList(Model.Genres, "Id", "Name"), "Select Genre", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Movie.GenreId)
+        </div>
+        <br />
+        @Html.HiddenFor(m => m.Movie.Id)
+        @Html.AntiForgeryToken()
+
+        @if (Model.Movie != null)
+        {
+            @Html.HiddenFor(m => m.Movie.DateAdded)
+        }
+        <br />
+        @if (Model.Movie.Id == 0)
+        {
+            <a class="btn btn-secondary" asp-action="Index">Cancel</a>
+        }
+        else
+        {
+            <a class="btn btn-secondary" asp-action="Details" asp-route-id="@Model.Movie.Id">Back</a>
+        }
+        <button type="submit" class="btn btn-primary">Save</button>
+        <hr /><br />
+        @if (Model.Movie == null)
+        {
+            <a class="btn btn-secondary" asp-action="Index">Return to List</a>
+        }
+    </div>
+</section>
+}
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

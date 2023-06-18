@@ -1,0 +1,80 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-Vidly-97829B2B-6540-4168-B72C-E339C0CDE15F</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20210916090215_InitialModel.cs" />
+    <Compile Remove="Data\Migrations\20210916090215_InitialModel.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210917091109_UpdateCustomerBirthDate.cs" />
+    <Compile Remove="Data\Migrations\20210917091109_UpdateCustomerBirthDate.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210917091415_UpdateCustomerBirthDate.cs" />
+    <Compile Remove="Data\Migrations\20210917091415_UpdateCustomerBirthDate.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210917091730_UpdateCustomerBirthDate.cs" />
+    <Compile Remove="Data\Migrations\20210917091730_UpdateCustomerBirthDate.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210917092552_AddMovie.cs" />
+    <Compile Remove="Data\Migrations\20210917092552_AddMovie.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210917092908_AddGenres.cs" />
+    <Compile Remove="Data\Migrations\20210917092908_AddGenres.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210917093320_PopulateGenre.cs" />
+    <Compile Remove="Data\Migrations\20210917093320_PopulateGenre.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210917095708_AddGenre.cs" />
+    <Compile Remove="Data\Migrations\20210917095708_AddGenre.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210917095828_PopulateGenre.cs" />
+    <Compile Remove="Data\Migrations\20210917095828_PopulateGenre.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210917194002_AddGenre.cs" />
+    <Compile Remove="Data\Migrations\20210917194002_AddGenre.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210917194046_PopulateGenre.cs" />
+    <Compile Remove="Data\Migrations\20210917194046_PopulateGenre.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210917194426_Movie-GenreCoupleTable.cs" />
+    <Compile Remove="Data\Migrations\20210917194426_Movie-GenreCoupleTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210917194612_Movie-GenreCoupleTable.cs" />
+    <Compile Remove="Data\Migrations\20210917194612_Movie-GenreCoupleTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210917194937_AddMovieGenreCoupleTable.cs" />
+    <Compile Remove="Data\Migrations\20210917194937_AddMovieGenreCoupleTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210917195530_AddMovie.cs" />
+    <Compile Remove="Data\Migrations\20210917195530_AddMovie.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210917195650_AddGenres.cs" />
+    <Compile Remove="Data\Migrations\20210917195650_AddGenres.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210917195704_AddGenre.cs" />
+    <Compile Remove="Data\Migrations\20210917195704_AddGenre.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210917195752_AddMovie-GenreCoupleList.cs" />
+    <Compile Remove="Data\Migrations\20210917195752_AddMovie-GenreCoupleList.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210917195853_PopulateGenre.cs" />
+    <Compile Remove="Data\Migrations\20210917195853_PopulateGenre.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210917200458_PopulateGenre.cs" />
+    <Compile Remove="Data\Migrations\20210917200458_PopulateGenre.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210918102519_Test.cs" />
+    <Compile Remove="Data\Migrations\20210918102519_Test.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210921072431_CustomerChangeDateOfBirthType.cs" />
+    <Compile Remove="Data\Migrations\20210921072431_CustomerChangeDateOfBirthType.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211019092727_SeedUsersAndRoles.cs" />
+    <Compile Remove="Data\Migrations\20211019092727_SeedUsersAndRoles.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211019093043_SeedUsersAndRoles.cs" />
+    <Compile Remove="Data\Migrations\20211019093043_SeedUsersAndRoles.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\UploadedFiles\Google.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="automapper" Version="4.1.0" />
+    <PackageReference Include="jquery.datatables" Version="1.10.15" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="3.1.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="3.1.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.17" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.15" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.15">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="SendGrid" Version="9.24.4" />
+  </ItemGroup>
+
+</Project>

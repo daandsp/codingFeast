@@ -1,0 +1,51 @@
+﻿@using Divo.Views.Shared
+
+@{
+    if (Model.Party.Active == true)
+    {
+        ViewData["ActivePage"] = ManageNavPages.Index;
+    }
+    else
+    {
+        ViewData["ActivePage"] = ManageNavPages.HistoryIndex;
+    }
+    ViewData["Title"] = "Partijen";
+}
+@model Divo.ViewModels.PartyParticipatingViewModel
+
+<h4>@Model.Party.Name</h4>
+<br />
+
+<div>
+    <h4>Deelnemend in stembussen</h4>
+    <dl class="row">
+        @if (Model.Participants.Any())
+        {
+            @foreach (var voting in Model.Participants)
+            {
+                <dt class="col-sm-2">
+                    <a class="btn btn-default" asp-controller="Voting" asp-action="Details" asp-route-id="@voting.VotingId"><strong>@voting.Voting.Name</strong></a>
+                </dt>
+                <dd class="col-sm-10">
+                    @voting.Voting.Description
+                </dd>
+            }
+        }
+    </dl>
+    @if (!Model.Participants.Any())
+    {
+        <h6>@Model.Party.Name doet nog aan geen enkele stembus mee!</h6>
+    }
+</div>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <br />
+        <h4>Actions</h4>
+        <hr />
+        <div>
+            <a class="btn btn-secondary" asp-action="Details" asp-route-id="@Model.Party.Id">Terug</a>
+        </div>
+    </div>
+</div>

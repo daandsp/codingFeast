@@ -1,0 +1,105 @@
+﻿
+@model Vidly.Models.Customer
+
+@{
+    ViewData["Title"] = "Customers - Delete";
+}
+
+<h2>@Model.Name</h2>
+<br />
+
+<div>
+        <h4>Remove customer.</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                Name:
+            </dt>
+            <dd class="col-sm-10">
+                @Model.Name
+            </dd>
+            <dt class="col-sm-2">
+                Date of Birth:
+            </dt>
+            <dd class="col-sm-10">
+                @Model.DateOfBirth.ToLongDateString()
+            </dd>
+            <dt class="col-sm-2">
+                Membership type:
+            </dt>
+            <dd class="col-sm-10">
+                @Model.MembershipType.Name
+            </dd>
+            <dt class="col-sm-2">
+                Is subscribed:
+            </dt>
+            <dd class="col-sm-10">
+                @Model.IsSubscribedToNewsletter
+            </dd>
+        </dl>
+    </div>
+<div id="customer">
+
+    <h4>Actions</h4>
+    <hr/>
+    <button @*type="submit"*@ class="btn btn-danger js-delete">Remove</button>
+    <a class="btn btn-secondary" asp-action="Details" asp-route-id="@Model.Id">Cancel</a>
+    <hr/>
+    <br/>
+    <a class="btn btn-secondary" asp-action="Index">Return to List</a>
+
+</div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function() {
+            $("#customer .js-delete").on("click", function() {
+                if (confirm("Are you sure you want to remove @Model.Name?")) {
+                       $.ajax({
+                           url: "../../../api/customers/@Model.Id",
+                           method: "DELETE",
+                           success: function() {
+                               console.log("Success");
+                               window.location = '/Customer'; // redirect
+                           }
+                       });
+                }
+            });
+        });
+    </script>
+}
+
+
+
+
+
+
+@*
+    
+    @using (Html.BeginForm("Delete", "Customer"))
+{
+    <section>
+        <div id="customer" class="col-md-4">
+            @Html.HiddenFor(m => m.Name)
+            @Html.HiddenFor(m => m.DateOfBirth)
+            @Html.HiddenFor(m => m.IsSubscribedToNewsletter)
+            @Html.HiddenFor(m => m.MembershipTypeId)
+            @Html.HiddenFor(m => m.Id)
+            @Html.AntiForgeryToken()
+
+            <br />
+            <div>
+                <h4>Actions</h4>
+                <hr />
+                <button type="submit" class="btn btn-danger js-delete">Remove</button>
+<a class="btn btn-secondary" asp-action="Details" asp-route-id="@Model.Id">Cancel</a>
+<hr />
+<br />
+<a class="btn btn-secondary" asp-action="Index">Return to List</a>
+</div>
+</div>
+</section>
+}
+
+*@
